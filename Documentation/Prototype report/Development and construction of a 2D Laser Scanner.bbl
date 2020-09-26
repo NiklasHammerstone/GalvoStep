@@ -1,14 +1,24 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem{Meng.2019}
+\bibitem[Sem(2007)]{SemiconductorComponentsIndustries.2007}
+{NPN $-$ BC368; PNP $-$ BC369 Amplifier Transistors}.
+\newblock \url{https://www.onsemi.com/pub/Collateral/BC368-D.PDF}, 2007.
+
+\bibitem[lm3(2014)]{lm317}
+{LM317 - 3-TerminalAdjustableRegulator}.
+\newblock \url{https://www.st.com/en/power-management/lm317.html}, 2014.
+
+\bibitem[Meng et~al.(2019)Meng, Cao, Li, and Lv]{Meng.2019}
 Xianyu Meng, Guohua Cao, Xue Li, and Qiongying Lv.
 \newblock {2-D Scanning Galvanometer Error Analysis and Its Correction}.
-\newblock {\em {Journal of Physics: Conference Series}}, 1345:022068, 2019.
-
-\bibitem{TexasInstruments.1997}
-{LM3173-TerminalAdjustableRegulator}, 1997.
-
-\bibitem{SemiconductorComponentsIndustries.2007}
-{NPN $-$ BC368; PNP $-$ BC369 Amplifier Transistors}, 2007.
+\newblock \emph{{Journal of Physics: Conference Series}}, 1345:\penalty0
+  022068, 2019.
+\newblock ISSN 1742-6588.
+\newblock \doi{\url{10.1088/1742-6596/1345/2/022068}}.
 
 \end{thebibliography}

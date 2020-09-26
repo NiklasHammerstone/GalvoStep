@@ -8,9 +8,9 @@
 \contentsline {subsection}{\numberline {3.1}Mechanics and Optics}{4}%
 \contentsline {subsection}{\numberline {3.2}Electronics}{5}%
 \contentsline {paragraph}{\nonumberline Note:}{6}%
-\contentsline {subsection}{\numberline {3.3}Code}{6}%
-\contentsline {subsubsection}{\numberline {3.3.1}Firmware}{6}%
-\contentsline {subsubsection}{\numberline {3.3.2}Transmission script}{6}%
-\contentsline {subsubsection}{\numberline {3.3.3}Gcode}{6}%
-\contentsline {section}{\numberline {4}Results}{6}%
-\contentsline {section}{References}{6}%
+\contentsline {subsection}{\numberline {3.3}Code}{7}%
+\contentsline {paragraph}{\nonumberline Firmware}{7}%
+\contentsline {paragraph}{\nonumberline Transmission script}{7}%
+\contentsline {paragraph}{\nonumberline G-Code}{8}%
+\contentsline {section}{\numberline {4}Results}{8}%
+\contentsline {section}{References}{8}%

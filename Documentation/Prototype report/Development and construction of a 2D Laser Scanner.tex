@@ -7,7 +7,7 @@
 \usepackage{url}
 \usepackage{float}
 \usepackage{fancyhdr}
-\bibliographystyle{unsrt}
+\bibliographystyle{plainnat}
 \newcommand{\uproman}[1]{\uppercase\expandafter{\romannumeral#1}}
 
 \title {Development and construction of a 2D Laser Scanner}
@@ -71,7 +71,7 @@ The mechanics of this design are relatively simple: The mirrors are attached to 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=15cm]{img/electronics.png}
-\caption{Wiring diagram for the system} %ENDSTOPS
+\caption{Wiring diagram for the system}
 \label{electronics}
 \end{center}
 \end{figure}
@@ -83,14 +83,32 @@ For the main controller, a Teensy 4.0 was chosen because of the extremely high c
 For driving the laserdiode, a special diode driver is used, which can supply 0-500mA of constant regulated current\footnote{It is possible to use a LM317 and correct resistors for a constant current source. This was tested in this project, but resulted in a lot of destroyed laser diodes, which is why a complete driver circuit was bought.}. \\
 This driver circuit is activated by a NPN-Transistor (specifially, a BC368). For calculating its base restistance $R_2$, a base current of the BC368 transistor of $I_B=5mA$ is selected \cite[p. 3]{SemiconductorComponentsIndustries.2007}. Since the Teensy 4.0 logic voltage is $3.3V$, a resistance value of $R_2=\frac{3.3V}{5mA}=660\Omega$ is selected. \\
 The Laser diode has three pins: \textit{Vcc}, \textit{GND} and \textit{VR}. \textit{Vcc} is connected to the output of the constant current source, \textit{GND} is connected to the Collector of the transistor to switch it on or off. \textit{VR} is left unconnected. 
-For supplying Vcc (5V) for the Teensy, a LM317 linear voltage regulator is used in the shown configuration. 
-%Math, nerdstuff
+For supplying Vcc (5V) for the Teensy and the laser driver, a LM317 linear voltage regulator is used in the shown configuration. The resistors $R_1$ and $R_2$ can be computed as follows \cite[p. 10]{lm317}: 
+\begin{equation}
+V_{out} = 1.25 \cdot \left( 1+\frac{R_2}{R_1} \right)
+\end{equation}
+$V_{out}$ must be 5V and $R_1$ is chosen to be $1k\Omega$. Therefore, $R_2$ must be:
+\begin{equation}
+R_2 = \left( \frac{V_{out}}{1.25V} - 1 \right) \cdot R_1 =  \left( \frac{5V}{1.25V} - 1 \right) \cdot 1000\Omega = 3000\Omega
+\end{equation}
+$R_4$ and $R_5$ are pull-down resistors that draw the pin state of pins $9$ and $10$ (pins for the endstops) to the low state. \\
+$JP_1$ and $JP_2$ are jumpers that set the microstepping mode of the stepper motor drivers to $\frac{1}{8}$ (jumper disconnected) or $\frac{1}{64}$ (jumper connected).
 \subsection{Code}
-The programm architecture consists of three main parts: The teensy firmware, a python script for Gcode transmission and the Gcode itself. 
-%picture of program architecture
-\subsubsection{Firmware}
-\subsubsection{Transmission script}
-\subsubsection{Gcode}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=15cm]{img/programArchitecture.png}
+\caption{A simplified diagram of the program architecture}
+\label{code}
+\end{center}
+\end{figure}
+The programm architecture (see figure \ref{code}) consists of three main parts: The teensy firmware, a python script for Gcode transmission and the G-Code itself. 
+\paragraph{Firmware}
+The firmware is the most critical part of the architecture: It interpretes the received (via Serial) G-Code commands and coordinates all of the outputs and inputs, such as step and direction signals and the transistor base for the laser or the endstop signals. Because it is directly compiled onto the Teensy via the Arduino IDE, it is written in C++.\\
+The firmware supports the following G-Code commands: G0, G1, G2, G3, G28, G60, G61, M3, M4, M5, M201, M203. \footnote{For a detailled explanation and syntax details, see the GalvoStep wiki at \url{https://github.com/NiklasHammerstone/GalvoStep}} The Firmware sends a short confirmation (usually: OK), when the command is processed. If it included stepper movement (such as G0), the confirmation will only be sent when steppers have reached their target position.
+\paragraph{Transmission script}
+The transmission script is a Python script that reads the gcode file from a specified location on the PC. The gcode is read, encoded and sent via a Serial connection (USB). Before the next line is sent, script waits for a confirmation from the firmware. This makes sure that no command is sent before the firmware is finished processing the previous command. This loop is repeated until no G-Code commands are left to send.
+\paragraph{G-Code}
+The G-Code file is a simple text file (.txt) which contains the command lines. It is critical that each line only contains one command.
 \section{Results}
  
 \addcontentsline{toc}{section}{References}
