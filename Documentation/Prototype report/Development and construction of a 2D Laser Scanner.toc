@@ -9,5 +9,8 @@
 \contentsline {subsection}{\numberline {3.2}Electronics}{5}%
 \contentsline {paragraph}{\nonumberline Note:}{6}%
 \contentsline {subsection}{\numberline {3.3}Code}{6}%
+\contentsline {subsubsection}{\numberline {3.3.1}Firmware}{6}%
+\contentsline {subsubsection}{\numberline {3.3.2}Transmission script}{6}%
+\contentsline {subsubsection}{\numberline {3.3.3}Gcode}{6}%
 \contentsline {section}{\numberline {4}Results}{6}%
 \contentsline {section}{References}{6}%

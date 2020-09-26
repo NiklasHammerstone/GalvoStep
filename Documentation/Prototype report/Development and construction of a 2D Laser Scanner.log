@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.5.4)  24 SEP 2020 00:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.5.4)  26 SEP 2020 22:50
 entering extended mode
 **"./Development and construction of a 2D Laser Scanner.tex"
 ("Development and construction of a 2D Laser Scanner.tex"
@@ -377,7 +377,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
-<img/optics.png, id=10, 862.72313pt x 415.92891pt>
+<img/optics.png, id=9, 862.72313pt x 415.92891pt>
 File: img/optics.png Graphic file (type png)
 <use img/optics.png>
 Package pdftex.def Info: img/optics.png  used on input line 36.
@@ -387,7 +387,38 @@ Overfull \hbox (8.53578pt too wide) in paragraph at lines 36--37
  [] 
  []
 
-[2] [3 <./img/optics.png>]
+
+LaTeX Warning: Citation `Meng.2019' on page 2 undefined on input line 37.
+
+
+LaTeX Warning: Citation `Meng.2019' on page 2 undefined on input line 37.
+
+[2]
+
+LaTeX Warning: Citation `Meng.2019' on page 3 undefined on input line 41.
+
+
+LaTeX Warning: Reference `eqn1' on page 3 undefined on input line 49.
+
+
+LaTeX Warning: Reference `eqn2' on page 3 undefined on input line 49.
+
+
+LaTeX Warning: Reference `eqn2' on page 3 undefined on input line 49.
+
+
+LaTeX Warning: Reference `eqn1' on page 3 undefined on input line 53.
+
+
+LaTeX Warning: Reference `optics' on page 3 undefined on input line 57.
+
+
+LaTeX Warning: Reference `eqn3' on page 3 undefined on input line 57.
+
+
+LaTeX Warning: Reference `eqn4' on page 3 undefined on input line 57.
+
+[3 <./img/optics.png>]
 <img/mechanics.png, id=35, 313.17pt x 269.13046pt>
 File: img/mechanics.png Graphic file (type png)
 <use img/mechanics.png>
@@ -399,15 +430,18 @@ Overfull \hbox (8.53578pt too wide) in paragraph at lines 64--65
  []
 
 [4 <./img/mechanics.png>]
-<img/electronics.png, id=40, 1228.59pt x 773.89125pt>
+<img/electronics.png, id=40, 1197.47375pt x 743.77875pt>
 File: img/electronics.png Graphic file (type png)
 <use img/electronics.png>
 Package pdftex.def Info: img/electronics.png  used on input line 73.
-(pdftex.def)             Requested size: 426.79134pt x 268.83492pt.
+(pdftex.def)             Requested size: 426.79134pt x 265.08174pt.
 
 Overfull \hbox (8.53578pt too wide) in paragraph at lines 73--74
  [] 
  []
+
+
+LaTeX Warning: Reference `electronics' on page 5 undefined on input line 78.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 81--82
@@ -415,41 +449,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 81--82
  []
 
 [5 <./img/electronics.png>]
+
+LaTeX Warning: Citation `SemiconductorComponentsIndustries.2007' on page 6 unde
+fined on input line 84.
+
 ("Development and construction of a 2D Laser Scanner.bbl") [6]
-("Development and construction of a 2D Laser Scanner.aux") ) 
+("Development and construction of a 2D Laser Scanner.aux")
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5853 strings out of 492450
- 103005 string characters out of 3129750
- 286053 words of memory out of 3000000
- 10123 multiletter control sequences out of 15000+200000
- 18167 words of font info for 47 fonts, out of 3000000 for 9000
+ 5862 strings out of 492450
+ 103552 string characters out of 3129750
+ 285961 words of memory out of 3000000
+ 10131 multiletter control sequences out of 15000+200000
+ 18950 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,8n,61p,10140b,328s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\nikla\Ap
-pData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\User
-s\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk
-> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\e
-crm0600.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/e
-c/dpi600\ecrm0800.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/
-jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/
-pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\nikla\AppData\Local\MiKTeX\
-2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\nikla\AppData\Loc
-al\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\nikla\A
-ppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Use
-rs\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2074.p
-k><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+ 62i,8n,61p,10140b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
+ecti1095.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecsx1095.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\nikla\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\nikla\AppData\Lo
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\nikla\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Us
+ers\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.
+pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecsx1440.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
+/ec/dpi600\ecrm1440.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfou
+r/jknappen/ec/dpi600\ecsx2074.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+mi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb>
 Output written on "Development and construction of a 2D Laser Scanner.pdf" (6 p
-ages, 1907665 bytes).
+ages, 1916674 bytes).
 PDF statistics:
  379 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
