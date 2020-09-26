@@ -174,6 +174,7 @@ void readGCode(){
     case 61:
       pos.x = saved.x;
       pos.y = saved.y;
+      move_To(pos.x, pos.y);
       Serial.print("Remembered X:"); Serial.print(pos.x); Serial.print(", Y: "); Serial.println(pos.y);
       break;
     default:
