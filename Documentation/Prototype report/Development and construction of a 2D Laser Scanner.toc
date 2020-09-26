@@ -1,0 +1,13 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{2}%
+\contentsline {section}{\numberline {2}Theory}{2}%
+\contentsline {subsection}{\numberline {2.1}Laser diodes}{2}%
+\contentsline {subsection}{\numberline {2.2}Stepper motors}{2}%
+\contentsline {subsection}{\numberline {2.3}Optics of the scanner}{3}%
+\contentsline {section}{\numberline {3}Implementation}{4}%
+\contentsline {subsection}{\numberline {3.1}Mechanics and Optics}{4}%
+\contentsline {subsection}{\numberline {3.2}Electronics}{5}%
+\contentsline {paragraph}{\nonumberline Note:}{6}%
+\contentsline {subsection}{\numberline {3.3}Code}{6}%
+\contentsline {section}{\numberline {4}Results}{6}%
+\contentsline {section}{References}{6}%
