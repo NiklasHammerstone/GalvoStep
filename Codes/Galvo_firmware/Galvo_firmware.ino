@@ -12,7 +12,7 @@
 #define LASER 11  //teensy: 20
 #define micro_step 64
 #define INPUT_SIZE 20  //Maximum length of expected Gcode Commands
-#define jogSpeed 8000  //speed in steps per second
+#define jogSpeed 800000  //speed in steps per second
 #define workSpeed 2500    //speed in steps per second
 #define endswitchX 9
 #define endswitchY 10
