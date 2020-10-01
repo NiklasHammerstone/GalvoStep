@@ -1,7 +1,7 @@
 #include <AccelStepper.h>
 #include <MultiStepper.h>
 
-
+//~~~~~~~~~~ Firmware Settings ~~~~~~~~~~~~
 
 #define D 100 //orthogonal distance of "last" mirror and projection plane
 #define E 20  //orthogonal distance of X and Y rotational axes
@@ -9,21 +9,24 @@
 #define dir_y 6
 #define step_x 4
 #define step_y 7
-#define LASER 11  //teensy: 20
+#define LASER 14
 #define micro_step 64
 #define INPUT_SIZE 20  //Maximum length of expected Gcode Commands
-#define jogSpeed 800000  //speed in steps per second
-#define workSpeed 2500    //speed in steps per second
 #define endswitchX 9
 #define endswitchY 10
 #define homePosX 1750  //Tweak this to get a perfect 45 deg angle as 0 position
 #define homePosY 1500  //Tweak this to get a perfect 45 deg angle as 0 position
+#define homeSpeed 3000
 #define INTERPOLATION 20    //Radius moves will be approximated by n=INTERPOLATION linear submoves
+  
+int jogSpeed = 13000;   //Default value for G0 jog Speed (step per second)
+int workSpeed = 2500;  //Default value for G1 work Speed (step per second)
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   int steps_per_rot = 200*micro_step;
   double degrees_per_step = 360.00 / steps_per_rot;
-
+  
   struct XY{
     double x;
     double y;
@@ -43,9 +46,9 @@
   
 void setup() {
 
-  Xaxis.setAcceleration(jogSpeed);   //Acceleration must be very high
+  Xaxis.setAcceleration(1000000);   //Acceleration must be very high
   Xaxis.setMaxSpeed(jogSpeed);  
-  Yaxis.setAcceleration(jogSpeed);   //Acceleration must be very high
+  Yaxis.setAcceleration(1000000);   //Acceleration must be very high
   Yaxis.setMaxSpeed(jogSpeed);  
   steppers.addStepper(Xaxis);
   steppers.addStepper(Yaxis);
@@ -125,24 +128,24 @@ void readGCode(){
     switch((int) Commands[0]){
     case 0:
       if (CommandIndeces[6]!=-1){
-         int linSpeed = (int) atan(Commands[6]/D)/degrees_per_step;
-         Xaxis.setSpeed(linSpeed);
-         Yaxis.setSpeed(linSpeed);
+         int linSpeed = (int) Commands[6];
+         Xaxis.setMaxSpeed(linSpeed);
+         Yaxis.setMaxSpeed(linSpeed);
       }else{
-         Xaxis.setSpeed(jogSpeed);
-         Yaxis.setSpeed(jogSpeed);
+         Xaxis.setMaxSpeed(jogSpeed);
+         Yaxis.setMaxSpeed(jogSpeed);
         }
       move_To(pos.x, pos.y);
       Serial.println("OK");
       break;
     case 1:
       if (CommandIndeces[6]!=-1){
-         int linSpeed = (int) atan(Commands[6]/D)/degrees_per_step;
-         Xaxis.setSpeed(linSpeed);
-         Yaxis.setSpeed(linSpeed);
+         int linSpeed = (int) Commands[6];
+         Xaxis.setMaxSpeed(linSpeed);
+         Yaxis.setMaxSpeed(linSpeed);
       }else{
-         Xaxis.setSpeed(jogSpeed);
-         Yaxis.setSpeed(jogSpeed);}
+         Xaxis.setMaxSpeed(jogSpeed);
+         Yaxis.setMaxSpeed(jogSpeed);}
       move_To(pos.x, pos.y);
       Serial.println("OK");
       break;
@@ -196,16 +199,16 @@ void readGCode(){
         Serial.println("LASER OFF");
         break;
       case 201: //Usage: M201 X[Accel] Y[Accel]
-        int maxAccelX = (int) atan(Commands[1]/D)/degrees_per_step;
-        int maxAccelY = (int) atan(Commands[2]/D)/degrees_per_step;
+        int maxAccelX = (int) Commands[1];
+        int maxAccelY = (int) Commands[2];
         Xaxis.setAcceleration(maxAccelX);
         Yaxis.setAcceleration(maxAccelY);           
         Serial.println("Max Acceleration has been set.");
       case 203: //Usage: M203 X[maxSpeed] Y[maxSpeed]
-        int maxSpeedX = (int) atan(Commands[1]/D)/degrees_per_step;
-        int maxSpeedY = (int) atan(Commands[2]/D)/degrees_per_step;
-        Xaxis.setMaxSpeed(maxAccelX);
-        Yaxis.setMaxSpeed(maxAccelY);           
+        int maxSpeedX = (int) Commands[1];
+        int maxSpeedY = (int) Commands[2];
+        Xaxis.setMaxSpeed(maxSpeedX);
+        Yaxis.setMaxSpeed(maxSpeedY);           
         Serial.println("Max Speed has been set.");
       break;
     default:
@@ -254,31 +257,39 @@ int indexof(char str[], char c){
 }
 
 void homing(){
+  
   Xaxis.moveTo(-steps_per_rot);
+  Xaxis.setSpeed(-homeSpeed);
+
 
   while(digitalRead(endswitchX)==LOW){
-    Xaxis.run();
+    Xaxis.runSpeed();
   }
 
   Xaxis.setCurrentPosition(0);
   Xaxis.moveTo(homePosX);
+  Xaxis.setSpeed(homeSpeed);
+
 
   while(Xaxis.distanceToGo() != 0){
-    Xaxis.run();
+    Xaxis.runSpeed();
   }
   Xaxis.setCurrentPosition(0);
 
  Yaxis.moveTo(-steps_per_rot);
+ Yaxis.setSpeed(-homeSpeed);
 
   while(digitalRead(endswitchY)==LOW){
-    Yaxis.run();
+    Yaxis.runSpeed();
   }
 
   Yaxis.setCurrentPosition(0);
   Yaxis.moveTo(homePosY);
+  Yaxis.setSpeed(homeSpeed);
+
 
   while(Yaxis.distanceToGo() != 0){
-    Yaxis.run();
+    Yaxis.runSpeed();
   }
   Yaxis.setCurrentPosition(0);
   currPos.x = 0.0;
