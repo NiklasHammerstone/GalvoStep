@@ -129,6 +129,7 @@ void readGCode(){
     case 0:
       if (CommandIndeces[6]!=-1){
          int linSpeed = (int) Commands[6];
+         jogSpeed = linSpeed;
          Xaxis.setMaxSpeed(linSpeed);
          Yaxis.setMaxSpeed(linSpeed);
       }else{
@@ -141,6 +142,7 @@ void readGCode(){
     case 1:
       if (CommandIndeces[6]!=-1){
          int linSpeed = (int) Commands[6];
+         workSpeed = linSpeed;
          Xaxis.setMaxSpeed(linSpeed);
          Yaxis.setMaxSpeed(linSpeed);
       }else{
