@@ -3,7 +3,7 @@
 
 //~~~~~~~~~~ Firmware Settings ~~~~~~~~~~~~
 
-#define D 100 //orthogonal distance of "last" mirror and projection plane
+#define D 231 //orthogonal distance of "last" mirror and projection plane
 #define E 20  //orthogonal distance of X and Y rotational axes
 #define dir_x 3
 #define dir_y 6
@@ -14,9 +14,9 @@
 #define INPUT_SIZE 20  //Maximum length of expected Gcode Commands
 #define endswitchX 9
 #define endswitchY 10
-#define homePosX 1750  //Tweak this to get a perfect 45 deg angle as 0 position
-#define homePosY 1500  //Tweak this to get a perfect 45 deg angle as 0 position
-#define homeSpeed 3000
+#define homePosX 1330  //Tweak this to get a perfect 45 deg angle as 0 position
+#define homePosY 1505  //Tweak this to get a perfect 45 deg angle as 0 position
+#define homeSpeed 500
 #define INTERPOLATION 20    //Radius moves will be approximated by n=INTERPOLATION linear submoves
   
 int jogSpeed = 13000;   //Default value for G0 jog Speed (step per second)
@@ -117,7 +117,7 @@ void readGCode(){
   
 
   if (CommandIndeces[1]!=-1){
-      pos.x = Commands[1];
+      pos.x = - Commands[1];
   }  else{pos.x = currPos.x;}
   
   if (CommandIndeces[2]!=-1){
@@ -156,7 +156,7 @@ void readGCode(){
         Commands[4]=0;}
       if (CommandIndeces[5]==-1){
         Commands[5]=0;}
-      moveArc(true, Commands[1], Commands[2], Commands[4], Commands[5]);
+      moveArc(true, -Commands[1], Commands[2], Commands[4], Commands[5]);
       Serial.println("OK");
       break;
     case 3:
@@ -164,7 +164,7 @@ void readGCode(){
         Commands[4]=0;}
       if (CommandIndeces[5]==-1){
         Commands[5]=0;}
-      moveArc(false, Commands[1], Commands[2], Commands[4], Commands[5]);
+      moveArc(false, -Commands[1], Commands[2], Commands[4], Commands[5]);
       Serial.println("OK");
       break;
     case 28:
