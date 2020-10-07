@@ -9,3 +9,5 @@ For a documentation of the supported G-code commands see the wiki.
 ### UPDATE 01.10.2020:
 First prototype is now functional!
 https://www.youtube.com/watch?v=stV5wWasxEc
+
+![Most recent picture of the prototype](https://github.com/NiklasHammerstone/GalvoStep/blob/master/Mechanics/GalvoStepV0.jpeg?raw=true)
