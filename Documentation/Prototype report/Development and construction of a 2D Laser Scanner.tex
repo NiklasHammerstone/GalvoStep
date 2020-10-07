@@ -19,8 +19,8 @@
 \tableofcontents
 \newpage
 \section{Introduction}
-Many laser scanning systems for material processing today are based on galvanometer-actuated mirror systems and utilize fiber lasers ($\lambda = 1064nm$) for efficient and fast engraving on metals. However, galvanometers are expensive and complicated to drive.  This projects goal is to create a similar system using stepper motors, which are very simple to use and laser diodes ($\lambda=650nm$ and $\lambda=445nm$). The secondary goal is to create a cheap but accurate drive system which should be possible to build with minimal tools (3D-Printer, lathe (optional) and basic soldering equipment) from scratch. For this sake, two versions will be built, the first one utilizing a low power laser diode and no f-theta lens for a safe proof-of-concept and the second one utilizing a high-power laser diode for engraving. \\
-In this documentation, the mechanical, electrical, mathematical and programming side of the project will be discussed.
+Many laser scanning\footnote{The term scanning in this context refers to material processing (e.g. engraving) line-by-line} systems for material processing today are based on galvanometer-actuated mirror systems and utilize fiber lasers ($\lambda = 1064nm$) for efficient and fast engraving on metals. However, galvanometers are expensive and complicated to drive.  This projects goal is to create a similar system using stepper motors, which are very simple to use and laser diodes ($\lambda=650nm$ and $\lambda=445nm$). The secondary goal is to create a cheap but accurate drive system which should be possible to build with minimal tools (3D-Printer, lathe (optional) and basic soldering equipment) from scratch. For this sake, two versions will be built, the first one utilizing a low power laser diode and no f-theta lens for a safe proof-of-concept and the second one utilizing a high-power laser diode for engraving. \\
+In this documentation, the mechanical, electrical, mathematical and programming side of the first project will be discussed.
 
 \section{Theory}
 In this section, relevant theory will be discussed. The development of the scanner will be based on these details. \\
@@ -66,7 +66,7 @@ In this section, construction details of the galvo scanner will be explained.
 \label{mechanics}
 \end{center}
 \end{figure}
-The mechanics of this design are relatively simple: The mirrors are attached to stepper motors which are screwed onto the 3D-printed base. This base also has features to screw on endswitches (for homing the mirrors) and the laserdiode array. The latter consists of a machined aluminum block into which the laserdiode holder (machined brass) fits. This holder also has a M9x0.5 thread for the collimator unit. The collimator can be adjusted via this thread.
+The mechanics of this design are relatively simple: The mirrors are attached to stepper motors which are screwed onto the 3D-printed base (PLA, 60\% infill). This base also has features to screw on endswitches (for homing the mirrors) and the laserdiode array. The latter consists of a machined aluminium block into which the laserdiode holder (machined brass) fits. This holder also has a M9x0.5 thread for the collimator unit. The collimator can be adjusted via this thread.
 \subsection{Electronics}
 \begin{figure}[H]
 \begin{center}
@@ -75,13 +75,13 @@ The mechanics of this design are relatively simple: The mirrors are attached to 
 \label{electronics}
 \end{center}
 \end{figure}
-Figure \ref{electronics} shows the electrical diagram of the system. The Stepper motors are Nema-17 ACT 17hs4417 steppers. The SilentStepSticks (containing Trinamic TMC2209 ICs)  were chosen as drivers because of their high micro-stepping capabilities (up to 256), extremely low noise and relatively low cost (about 10 Euros/driver). \\
+Figure \ref{electronics} shows the electrical diagram of the system. The stepper motors are Nema-17 ACT 17hs4417 steppers. The SilentStepSticks (containing Trinamic TMC2209 ICs)  were chosen as drivers because of their high micro-stepping capabilities (up to 256), extremely low noise and relatively low cost (about 10 Euros or 12 USD per driver). \\
 For the main controller, a Teensy 4.0 was chosen because of the extremely high clock frequency of 600Mhz\footnote{In comparison, an Arduino Nano only has 16MHz clock frequency!} and its easy programmability through the Arduino IDE. It must be noted, that the Teensy 4.0 only tolerates 3.3V logic voltage. 
 
 \paragraph{Note:} Teensy Boards and laserdiodes can be very fragile electrical components (multiple Teensies and Diodes were destroyed in this project), so it may be worth the money and effort to use an Arduino (Nano in this case) in order to test the circuits/code and use dummy loads for simulating laser diodes. Since the SilentStepStick-Drivers can tolerate 3.3V and 5V as logic voltages, the microcontrollers can be changed without changing the circuit. However, the footprints are not equal, so jumper cables are necessary for replacing the Teensy with an Arduino. \\
 
 For driving the laserdiode, a special diode driver is used, which can supply 0-500mA of constant regulated current\footnote{It is possible to use a LM317 and correct resistors for a constant current source. This was tested in this project, but resulted in a lot of destroyed laser diodes, which is why a complete driver circuit was bought.}. \\
-This driver circuit is activated by a NPN-Transistor (specifially, a BC368). For calculating its base restistance $R_2$, a base current of the BC368 transistor of $I_B=5mA$ is selected \cite[p. 3]{SemiconductorComponentsIndustries.2007}. Since the Teensy 4.0 logic voltage is $3.3V$, a resistance value of $R_2=\frac{3.3V}{5mA}=660\Omega$ is selected. \\
+This driver circuit is activated by a NPN-Transistor (specifially, a BC368). For calculating its base resistance $R_2$, a base current of the BC368 transistor of $I_B=5mA$ is selected \cite[p. 3]{SemiconductorComponentsIndustries.2007}. Since the Teensy 4.0 logic voltage is $3.3V$, a resistance value of $R_2=\frac{3.3V}{5mA}=660\Omega$ is selected. \\
 The Laser diode has three pins: \textit{Vcc}, \textit{GND} and \textit{VR}. \textit{Vcc} is connected to the output of the constant current source, \textit{GND} is connected to the Collector of the transistor to switch it on or off. \textit{VR} is left unconnected. 
 For supplying Vcc (5V) for the Teensy and the laser driver, a LM317 linear voltage regulator is used in the shown configuration. The resistors $R_1$ and $R_2$ can be computed as follows \cite[p. 10]{lm317}: 
 \begin{equation}
@@ -110,7 +110,7 @@ The transmission script is a Python script that reads the gcode file from a spec
 \paragraph{G-Code}
 The G-Code file is a simple text file (.txt) which contains the command lines. It is critical that each line only contains one command.
 \section{Results}
- 
+
 \addcontentsline{toc}{section}{References}
 \bibliography{literature}
 \end{document}
