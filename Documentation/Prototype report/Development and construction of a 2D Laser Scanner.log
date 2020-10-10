@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.5.4)  27 SEP 2020 00:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.5.4)  11 OCT 2020 00:19
 entering extended mode
 **"./Development and construction of a 2D Laser Scanner.tex"
 ("Development and construction of a 2D Laser Scanner.tex"
@@ -409,12 +409,11 @@ Overfull \hbox (8.53578pt too wide) in paragraph at lines 73--74
  [] 
  []
 
-
+[5 <./img/electronics.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-[5 <./img/electronics.png>]
 <img/programArchitecture.png, id=45, 963.6pt x 542.025pt>
 File: img/programArchitecture.png Graphic file (type png)
 <use img/programArchitecture.png>
@@ -430,51 +429,114 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 07.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [7 <./img/programArchitecture.png>] ("Development and construction of a 2D La
-ser Scanner.bbl"
+) [7 <./img/programArchitecture.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
+<img/hearttestslow.png, id=56, 334.24875pt x 217.93922pt>
+File: img/hearttestslow.png Graphic file (type png)
+<use img/hearttestslow.png>
+Package pdftex.def Info: img/hearttestslow.png  used on input line 121.
+(pdftex.def)             Requested size: 167.29967pt x 109.08572pt.
+
+Underfull \hbox (badness 5022) in paragraph at lines 122--122
+[]\T1/cmr/m/n/10.95 Arcs of the pro-jected
+ []
+
+<img/hearttest.png, id=57, 451.6875pt x 242.78203pt>
+File: img/hearttest.png Graphic file (type png)
+<use img/hearttest.png>
+Package pdftex.def Info: img/hearttest.png  used on input line 127.
+(pdftex.def)             Requested size: 167.29967pt x 89.92426pt.
+
+Underfull \hbox (badness 1831) in paragraph at lines 128--128
+[]\T1/cmr/m/n/10.95 Almost en-tire heart at
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--133
+
+ []
+
+<img/testprocedure.jpeg, id=58, 1606.0pt x 1204.5pt>
+File: img/testprocedure.jpeg Graphic file (type jpg)
+<use img/testprocedure.jpeg>
+Package pdftex.def Info: img/testprocedure.jpeg  used on input line 136.
+(pdftex.def)             Requested size: 426.79134pt x 320.09155pt.
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 136--137
+ [] 
+ []
+
+[8 <./img/hearttestslow.png> <./img/hearttest.png>]
+<img/accuracy.png, id=64, 534.12047pt x 288.7036pt>
+File: img/accuracy.png Graphic file (type png)
+<use img/accuracy.png>
+Package pdftex.def Info: img/accuracy.png  used on input line 152.
+(pdftex.def)             Requested size: 426.79134pt x 230.69887pt.
+
+Overfull \hbox (8.53578pt too wide) in paragraph at lines 152--153
+ [] 
+ []
+
+[9 <./img/testprocedure.jpeg>]
+Underfull \hbox (badness 10000) in paragraph at lines 157--159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
+
+ []
+
+[10 <./img/accuracy.png>]
+("Development and construction of a 2D Laser Scanner.bbl"
 Underfull \hbox (badness 4859) in paragraph at lines 13--15
 []\T1/cmr/m/n/10.95 LM317 - 3-TerminalAdjustableRegulator.  $\T1/cmtt/m/n/10.95
  https : / / www . st . com / en /
  []
 
-) [8] ("Development and construction of a 2D Laser Scanner.aux") ) 
+) [11] ("Development and construction of a 2D Laser Scanner.aux") ) 
 Here is how much of TeX's memory you used:
- 5888 strings out of 492450
- 104041 string characters out of 3129750
- 287117 words of memory out of 3000000
- 10152 multiletter control sequences out of 15000+200000
- 18794 words of font info for 49 fonts, out of 3000000 for 9000
+ 5924 strings out of 492450
+ 104687 string characters out of 3129750
+ 288150 words of memory out of 3000000
+ 10182 multiletter control sequences out of 15000+200000
+ 19480 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,8n,61p,10140b,328s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\ni
-kla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C
-:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0
-900.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dp
-i600\ecti1095.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkna
-ppen/ec/dpi600\ecrm0900.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/l
-jfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\
-fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\nikla\AppData\Local\M
-iKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\nikla\AppDa
-ta\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\n
-ikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <
-C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx
-1440.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/d
-pi600\ecrm1440.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkn
-appen/ec/dpi600\ecsx2074.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-sy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on "Development and construction of a 2D Laser Scanner.pdf" (8 p
-ages, 1977203 bytes).
+ <C:\Users\n
+ikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <
+C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti
+0900.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/d
+pi600\ectt0900.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkn
+appen/ec/dpi600\ecti1095.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/
+ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9
+\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\nikla\AppData\Local\
+MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\nikla\AppD
+ata\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\
+nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> 
+<C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecs
+x1095.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/
+dpi600\ecsx1440.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jk
+nappen/ec/dpi600\ecrm1440.pk> <C:\Users\nikla\AppData\Local\MiKTeX\2.9\fonts/pk
+/ljfour/jknappen/ec/dpi600\ecsx2074.pk><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy8.pfb>
+Output written on "Development and construction of a 2D Laser Scanner.pdf" (11 
+pages, 2667845 bytes).
 PDF statistics:
- 468 PDF objects out of 1000 (max. 8388607)
+ 531 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

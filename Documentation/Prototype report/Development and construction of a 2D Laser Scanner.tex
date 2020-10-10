@@ -54,7 +54,7 @@ From equation \ref{eqn1}, $\theta_x$ can be found:
 \begin{equation}\label{eqn4}
 \theta_x=\frac{arctan\left( \frac{x}{e+\sqrt{d^2+y^2}}\right) }{2}
 \end{equation}
-Looking at figure \ref{optics}, $x$ and $y$ must be zero, when $\theta_x=theta_y=0^\circ$ \footnote{with these angles, all beams are orthogonal. This configuration is referred to the neutral or home position.}. Equations \ref{eqn3} and \ref{eqn4} confirm this. 
+Looking at figure \ref{optics}, $x$ and $y$ must be zero, when $\theta_x=\theta_y=0^\circ$ \footnote{with these angles, all beams are orthogonal. This configuration is referred to the neutral or home position.}. Equations \ref{eqn3} and \ref{eqn4} confirm this. 
 
 \section{Implementation}
 In this section, construction details of the galvo scanner will be explained.
@@ -66,7 +66,7 @@ In this section, construction details of the galvo scanner will be explained.
 \label{mechanics}
 \end{center}
 \end{figure}
-The mechanics of this design are relatively simple: The mirrors are attached to stepper motors which are screwed onto the 3D-printed base (PLA, 60\% infill). This base also has features to screw on endswitches (for homing the mirrors) and the laserdiode array. The latter consists of a machined aluminium block into which the laserdiode holder (machined brass) fits. This holder also has a M9x0.5 thread for the collimator unit. The collimator can be adjusted via this thread.
+The mechanics of this design are relatively simple: The mirrors are attached to stepper motors by glueing aluminium holders onto the flat piece of the rotor and glueing the mirrors (in this case 20x3mm molybdenum mirrors) onto the holder and the rotor\footnote{The holders were machined and 3D-printed (PLA, 100\% infill) to test the difference in performance, but none was noticeable}. The motors are then screwed onto the 3D-printed base (PLA, 60\% infill). This base also has features to screw on endswitches (for homing the mirrors) and the laserdiode array. The latter consists of a machined aluminium block into which the laserdiode holder (machined brass) fits. This holder also has a M9x0.5 thread for the collimator unit. The collimator can be adjusted via this thread.
 \subsection{Electronics}
 \begin{figure}[H]
 \begin{center}
@@ -108,8 +108,60 @@ The firmware supports the following G-Code commands: G0, G1, G2, G3, G28, G60, G
 \paragraph{Transmission script}
 The transmission script is a Python script that reads the gcode file from a specified location on the PC. The gcode is read, encoded and sent via a Serial connection (USB). Before the next line is sent, script waits for a confirmation from the firmware. This makes sure that no command is sent before the firmware is finished processing the previous command. This loop is repeated until no G-Code commands are left to send.
 \paragraph{G-Code}
-The G-Code file is a simple text file (.txt) which contains the command lines. It is critical that each line only contains one command.
+The G-Code file is a simple text file (.txt) which contains the command lines. It is critical that each line only contains one command. \\
+
+
 \section{Results}
+\subsection{General functionality}
+The proposed functionality was realised. The prototype can be given commands by sending G-Code commands via the Arduino IDE Serial Monitor or a Python script\footnote{The code files can be downloaded via GitHub: \url{https://github.com/NiklasHammerstone/GalvoStep}}. The commands are executed instantly. No delay between commands is perceivable when a whole G-Code file is executed via the Python script. This results in a smooth movement of the laser spot. \\
+A G-Code file drawing a heart shape was tested with step frequencies of $2000 \frac{steps}{s}$ up to $20000\frac{steps}{s}$ and a distance from the projection plane of about $200mm$. At about $10000-12000 \frac{steps}{s}$ the moving spot started to look like a (more or less) stationary image\footnote{This is only true for the naked eye. The border step frequency is dependent on the size of the image, the background, the laser intensity and the general lighting of the room.}, with the shape of the image still not being noticeably distorted. At about $15000-18000 \frac{steps}{s}$ the image stationarity was satisfactory, but mechanical vibrations led to a distorted image. The results of this test can be seen in figures \ref{slow} and \ref{fast}. 
+\begin{figure}[!h]
+\noindent
+\begin{minipage}{0.4\textwidth}%
+\includegraphics[width=\textwidth]{img/hearttestslow}
+\caption{Arcs of the projected heart at $8000 \frac{steps}{s}$}
+\label{slow}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.4\textwidth}%
+\includegraphics[width=\textwidth]{img/hearttest}
+\caption{Almost entire heart at $20000 \frac{steps}{s}$}
+\label{fast}
+\end{minipage}%
+\end{figure}
+Note that the rolling shutter of the camera is quite fast, which is why only the picture at about $20000 \frac{steps}{s}$ is (almost) completely visible in one photo. However the difference of the arcs alone should convey the diffence of the whole picture. \\
+\subsection{Accuracy and precision}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=15cm]{img/testprocedure.jpeg}
+\caption{Snapshot of the testing procedure}
+\label{testing}
+\end{center}
+\end{figure}
+In order to test the accuracy of the prototype, the following procedure was performed:
+\begin{enumerate}
+\item Place the machine in front of a plane with a defined distance D.
+\item Home the mirrors.
+\item Move the laser point in 10mm steps in X-, Y-, and XY direction (from -20 to +80) with speed F.\footnote{An example command for testing the XY direction would be \textit{G0 X20 Y20}. In this test, X and Y coordinates were always equal to reach an ideal line of slope 1.}
+\item Mark the actual laser spot carefully with a pen for each step (see figure \ref{testing})\footnote{Since the prototype utilizes a 7mW laser diode, the laser itself is too weak to mark the paper by itself.}
+\item After the testing is done, measure the actual distances of the spots from the origin point.
+\end{enumerate}
+From the Y-, X- and XY, the average and maximum difference from the ideal coordinates are computed. For the XY-coordinates, average slope and intercept were calculated to analyze the linearity of the system.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=15cm]{img/accuracy.png}
+\caption{Results of the accuracy analysis}
+\label{results}
+\end{center}
+\end{figure}
+In figure \ref{results} the results of the mentioned tests are shown. It is expected, that the average and maximum differences (representing positional accuracy) would rise with rising distance \textit{D} and feedrate \textit{F}. However, no such trends can be seen from the data. The average difference is consistently lower than $0.2mm$, but the absolute maximum is $2mm$. This suggests relatively high accuracy, but low precision. This is verified by the slope of the trendline for the XY-point testing. The highest difference from the ideal slope of 1 (since the same values were used for X and Y coordinates simultaneously) was $0.018\frac{mm}{mm}$ suggesting high accuracy. However, the intercepts of the trendlines (ideal would be zero) differ widely from zero, with differences going as high as $0.738mm$, suggesting low precision. This result suggests that the machine is working correctly\footnote{\glqq Working correctly\grqq refers to the mathematic model being correct and the physical, electrical and optical design being expedient in theory}, but is lacking the mechanical alignment for high precision.\\ 
+%endstoptest, backlashtest
+\subsection{Flaws of the testing methodology} It must be noted that the proposed method of testing has inherent inaccuracies: Since the laser can not mark paper by itself, it is necessary to use a pen, but as soon as the pen is brought into position, it blocks the laser beam. This way its necessary for the operator to visually remember where the spot was. The marked spot can be checked by removing the pen and therefore unblocking the pen, but since both the spot and the pen marking have a diameter of approximately $1.5mm$\footnote{The actual laser spot is much smaller than this, but appears to be larger due the light  being scattered and dispersed in the surrounding paper}, this method can not guarantee results within about half of that range ($0.5 - 0.9 mm$). This can be partly compensated by making sure that the caliper blades are positioned in the exact middle (which itself is only possible within a few tenths of a millimeter) of the pen marking when measuring the points. Also, the paper pieces used for this test did bow out by approximately $1mm$, which is unideal. In conclusion, the difference of laser spot and pen marking and the measuring inaccuracies add up to such a big margin of error (approximately $\pm 1mm$) that the exact values of the point coordinates are relatively useless for accuracy analysis. However, since the presented flaws are unsystematic and randomn (except for the bow of the paper), the averages (average distance, slope and intercept of trendline) should be more conclusive. \\
+These flaws can be elimininated entirely by using a more powerful laser which can mark wood by itself. This would eliminate the pen method with all its flaws and inaccuracies and only leave the direct measuring inaccuracies of the calipers, which are usually within $0.02 - 0.1mm$. \\
+
+\section{Conclusion}
+
+\section{Prospect}
 
 \addcontentsline{toc}{section}{References}
 \bibliography{literature}

@@ -13,4 +13,9 @@
 \contentsline {paragraph}{\nonumberline Transmission script}{7}%
 \contentsline {paragraph}{\nonumberline G-Code}{8}%
 \contentsline {section}{\numberline {4}Results}{8}%
-\contentsline {section}{References}{8}%
+\contentsline {subsection}{\numberline {4.1}General functionality}{8}%
+\contentsline {subsection}{\numberline {4.2}Accuracy and precision}{9}%
+\contentsline {subsection}{\numberline {4.3}Flaws of the testing methodology}{10}%
+\contentsline {section}{\numberline {5}Conclusion}{11}%
+\contentsline {section}{\numberline {6}Prospect}{11}%
+\contentsline {section}{References}{11}%
