@@ -15,7 +15,8 @@
 \contentsline {section}{\numberline {4}Results}{8}%
 \contentsline {subsection}{\numberline {4.1}General functionality}{8}%
 \contentsline {subsection}{\numberline {4.2}Accuracy and precision}{9}%
-\contentsline {subsection}{\numberline {4.3}Flaws of the testing methodology}{10}%
+\contentsline {subsection}{\numberline {4.3}Flaws of the testing methodology}{11}%
 \contentsline {section}{\numberline {5}Conclusion}{11}%
-\contentsline {section}{\numberline {6}Prospect}{11}%
-\contentsline {section}{References}{11}%
+\contentsline {section}{\numberline {6}Prospect}{12}%
+\contentsline {section}{\numberline {7}Acknowledgements}{12}%
+\contentsline {section}{References}{12}%
