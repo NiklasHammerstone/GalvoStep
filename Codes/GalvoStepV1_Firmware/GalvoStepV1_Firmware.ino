@@ -3,19 +3,19 @@
 
 //~~~~~~~~~~ Firmware Settings ~~~~~~~~~~~~
 
-#define D 231 //orthogonal distance of "last" mirror and projection plane
-#define E 20  //orthogonal distance of X and Y rotational axes
+#define D 170 //orthogonal distance of "last" mirror and projection plane
+#define E 19  //orthogonal distance of X and Y rotational axes
 #define dir_x 3
-#define dir_y 6
-#define step_x 4
+#define dir_y 4
+#define step_x 6
 #define step_y 7
 #define LASER 14
 #define micro_step 64
 #define INPUT_SIZE 20  //Maximum length of expected Gcode Commands
-#define endswitchX 9
-#define endswitchY 10
-#define homePosX 1330  //Tweak this to get a perfect 45 deg angle as 0 position
-#define homePosY 1505  //Tweak this to get a perfect 45 deg angle as 0 position
+#define endswitchX 18
+#define endswitchY 20
+#define homePosX 1470  //Tweak this to get a perfect 45 deg angle as 0 position
+#define homePosY 1350  //Tweak this to get a perfect 45 deg angle as 0 position
 #define homeSpeed 500
 #define INTERPOLATION 20    //Radius moves will be approximated by n=INTERPOLATION linear submoves
   
@@ -62,7 +62,7 @@ void setup() {
   pinMode(13, OUTPUT);    //Indicates that the Teensy is working
   digitalWrite(13, HIGH);
 
-  Serial.println("<< GALVO_STEP V0 READY >> ");
+  Serial.println("<< GALVO_STEP V1 READY >> ");
 }
 
 void loop() {
@@ -71,6 +71,14 @@ void loop() {
   if (newData == true){
     readGCode();
     newData = false;}
+  if (digitalRead(endswitchY)==HIGH){
+    Serial.println("Y has been triggered");
+    delay(500);
+  }
+  if (digitalRead(endswitchX)==HIGH){
+    Serial.println("X has been triggered");
+    delay(500);
+  }
 
 }
 
@@ -199,6 +207,12 @@ void readGCode(){
       case 5:
         digitalWrite(LASER, LOW);
         Serial.println("LASER OFF");
+        break;
+      case 6:
+        Serial.println("Firing the Laser for 100ms");
+        digitalWrite(LASER, HIGH);
+        delay(100);
+        digitalWrite(LASER, LOW);
         break;
       case 201: //Usage: M201 X[Accel] Y[Accel]
         int maxAccelX = (int) Commands[1];
