@@ -2,11 +2,68 @@ import tkinter as tk
 import os
 import tkinter.filedialog as fd
 import tkinter.font as font
-import Gcode_creator as gc
-import Gcode_handler as gh
 from PIL import ImageTk, Image
 import serial
 import time
+import cv2
+import math
+
+
+def send_command(command, ser):
+    l = command.strip()
+    ser.write(str.encode(l + "\n"))
+    _ = ser.readline()
+    return _
+
+
+def createGCode(path, x, pixelsize, threshold, feed, jog):
+    """Creates Gcode. Uses desired horizontal width (mm) for picture to scale."""
+
+    def calc(val):
+        return round(val*pixelsize, 2)
+
+    img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+    r = img.shape[1]/img.shape[0]
+    cv2.imshow("wrench", img)
+    columns = math.ceil(x/pixelsize)
+    rows = math.ceil(columns * r)
+    resized = cv2.resize(img, (columns, rows), interpolation=cv2.INTER_AREA)
+    resized = cv2.threshold(resized, threshold, 255, cv2.THRESH_BINARY)[1]
+
+    if os.path.exists("laser_gcode.txt"):
+        os.remove("laser_gcode.txt")
+    f = open("laser_gcode.txt", "w+")
+    f.write("G28\r")
+    f.write("G0 X0 Y0 F%d\r" % feed)
+    laser_on=False
+    for i in range(rows):  # y
+        prev_val = 255
+        if laser_on == True:
+            f.write("M5\r")
+            laser_on = False
+        f.write("G0 X0 Y-{} F{}\r".format(calc(i), jog))
+        for j in range(columns):   # x
+            if prev_val == 255 and resized[i, j] == 0:
+                if j==columns-1:
+                    f.write("G0 X{} Y-{} F{}\r".format(calc(j), calc(i), jog))
+                    f.write("M6\r")
+                elif resized[i,j+1] == 255:
+                    f.write("G0 X{} Y-{} F{}\r".format(calc(j), calc(i), jog))
+                    f.write("M6\r")
+                else:
+                    f.write("G0 X{} Y-{} F{}\r".format(calc(j), calc(i), jog))
+                    f.write("M3\r")
+                    laser_on = True
+                prev_val = 0
+            elif prev_val == 0 and resized[i, j] == 255:
+                f.write("G0 X{} Y-{} F{}\r".format(calc(j-1), calc(i), feed))
+                if laser_on == True:
+                    f.write("M5\r")
+                    laser_on = False
+                prev_val = 255
+    f.close()
+
+
 
 class GUI:
     port = ""
@@ -101,7 +158,7 @@ class GUI:
 
     def create_gcode(self):
         try:
-            gc.createGCode(self.pathentry.get(), x=float(self.xentry.get()), pixelsize=float(self.pixentry.get()),
+            createGCode(self.pathentry.get(), x=float(self.xentry.get()), pixelsize=float(self.pixentry.get()),
                            threshold=128, feed=float(self.feedentry.get()), jog=float(self.jogentry.get()))
             if os.path.exists("laser_gcode.txt"):
                 self.messagelabel['text'] = "GCode file was created."
@@ -123,8 +180,9 @@ class GUI:
 
     def send_serial(self):
         try:
+            self.machinelabel['text'] = "Command received..."
             cmd = self.serialentry.get()
-            feedback = gh.send_command(cmd, self.ser)
+            feedback = send_command(cmd, self.ser)
             self.machinelabel['text'] = feedback
         except serial.serialutil.SerialException:
             self.machinelabel['text'] = "Machine is not connected"
