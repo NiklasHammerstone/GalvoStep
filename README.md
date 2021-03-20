@@ -7,6 +7,10 @@ Feel free to copy/advance this project.
 
 For a documentation of the supported G-code commands see the wiki.
 
+### Final Update 20.03.2021
+
+GalvoStep V1 is finished. See https://youtu.be/tV-LJvpVcUo for a typical engraving process. Accuracy is +-0.5mm I'd say. All the software can be found in CODES. 
+
 ### UPDATE 04.01.2021:
 GalvoStep V1 is now functional but requires further testing. See https://youtu.be/xkFyk6ncNaY for initial test.
 GUI (.py and .exe) and the Firmware for Teensy 4.0 can be found in CODES
